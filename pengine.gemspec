@@ -1,25 +1,21 @@
-# coding: utf-8
-lib = File.expand_path('../lib', __FILE__)
-$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'pengine/version'
+$:.push File.expand_path("../lib", __FILE__)
 
-Gem::Specification.new do |spec|
-  spec.name          = "pengine"
-  spec.version       = Pengine::VERSION
-  spec.authors       = ["linyows"]
-  spec.email         = ["linyows@gmail.com"]
+# Maintain your gem's version:
+require "pengine/version"
 
-  spec.summary       = %q{The Pengin is PowerDNS API mountable engine for Rails.}
-  spec.description   = %q{The Pengin is PowerDNS API mountable engine for Rails.}
-  spec.homepage      = "https://github.com/linyows/pengine"
+# Describe your gem and declare its dependencies:
+Gem::Specification.new do |s|
+  s.name        = "pengine"
+  s.version     = Pengine::VERSION
+  s.authors     = ["linyows"]
+  s.email       = ["linyows@gmail.com"]
+  s.homepage    = "https://github.com/linyows/pengine"
+  s.summary     = "The Pengin is PowerDNS API mountable engine for Rails."
+  s.description = "The Pengin is PowerDNS API mountable engine for Rails."
+  s.license     = "MIT"
+  s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
 
-  spec.files         = `git ls-files -z`.split("\x0").reject do |f|
-    f.match(%r{^(test|spec|features)/})
-  end
-  spec.bindir        = "exe"
-  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
-  spec.require_paths = ["lib"]
-
-  spec.add_development_dependency "bundler", "~> 1.14"
-  spec.add_development_dependency "rake", "~> 10.0"
+  s.add_dependency "rails", ">= 4.2.7"
+  s.add_development_dependency "mysql2"
+  s.add_development_dependency "sqlite3"
 end
