@@ -1,0 +1,11 @@
+language: ruby
+rvm:
+  - 2.4.1
+  - 2.3.4
+  - 2.2.7
+before_install:
+  - gem update bundler --no-document
+script:
+  - bundle exec rake test
+notifications:
+  slack: linyows:2oeZ2qcLnaMjbnEYodwEXKTr
