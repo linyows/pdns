@@ -43,3 +43,12 @@ Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/linyows/pengine.
 
+Author
+------
+
+- [linyows](https://github.com/linyows)
+
+License
+-------
+
+The MIT License (MIT)
