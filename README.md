@@ -27,7 +27,9 @@ $ gem install pengine
 Usage
 -----
 
-```
+config/routes.rb:
+
+```ruby
 mount Pengine::Engine, at: '/dns'
 ```
 
