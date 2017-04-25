@@ -33,6 +33,12 @@ config/routes.rb:
 mount Pengine::Engine, at: '/dns'
 ```
 
+setup:
+
+```sh
+$ bin/rails blorgh:install:migrations
+```
+
 Development
 -----------
 
