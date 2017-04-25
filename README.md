@@ -23,7 +23,9 @@ Or install it yourself as:
 Usage
 -----
 
-TODO: Write usage instructions here
+```
+mount Pengine::Engine, at: '/dns'
+```
 
 Development
 -----------
