@@ -8,19 +8,19 @@ Installation
 
 Add this line to your application's Gemfile:
 
-```ruby
+```rb
 gem 'pengine'
 ```
 
 And then execute:
 
-```
+```sh
 $ bundle
 ```
 
 Or install it yourself as:
 
-```
+```sh
 $ gem install pengine
 ```
 
@@ -29,7 +29,7 @@ Usage
 
 config/routes.rb:
 
-```ruby
+```rb
 mount Pengine::Engine, at: '/dns'
 ```
 
