@@ -21,16 +21,17 @@ module Pengine
     end
 
     def update_serial
-      soa = Record.where(domain_id: domain_id, type: "SOA").first
+      soa = Record.where(domain_id: domain_id, type: 'SOA').first
       unless soa.nil?
-        list = soa.content.split(" ")
+        list = soa.content.split(' ')
         serial = list[2]
         list[2] = serial.to_i + 1
-        soa.update_column(:content, list.join(" "))
+        soa.update_column(:content, list.join(' '))
       end
     end
 
     private
+
     def set_change_date
       self.change_date = Time.now.to_i
     end
