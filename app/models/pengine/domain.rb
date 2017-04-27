@@ -4,7 +4,7 @@ module Pengine
     has_many :records, dependent: :destroy
 
     validates :name, presence: true, uniqueness: true,
-      format: { with: DOMAIN_FORMAT }
+      format: { with: Pengine.domain_format }
     validates :type, presence: true, inclusion: {
       in: %w(NATIVE MASTER SLAVE SUPERSLAVE)
     }

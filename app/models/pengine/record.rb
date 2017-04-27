@@ -5,7 +5,7 @@ module Pengine
 
     validates :domain_id, presence: true
     validates :name, presence: true,
-      format: { with: DOMAIN_FORMAT },
+      format: { with: Pengine.domain_format },
       uniqueness: { scope: [:type, :content] }
     validates :type, presence: true, inclusion: {
       in: %w(SOA NS A CNAME MX TXT SRV PTR AAAA LOC SPF SSHFP)
