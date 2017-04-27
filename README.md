@@ -3,6 +3,9 @@ Pengine
 
 The Pengine is PowerDNS API mountable engine for Rails.
 
+[![Travis](https://img.shields.io/travis/linyows/pengine.svg?style=flat-square)](https://travis-ci.org/linyows/pengine)
+[![ruby gem](https://img.shields.io/gem/v/pengine.svg?style=flat-square)](https://rubygems.org/gems/pengine)
+
 Installation
 ------------
 
