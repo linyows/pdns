@@ -39,7 +39,7 @@ mount Pengine::Engine, at: '/dns'
 setup:
 
 ```sh
-$ bin/rails blorgh:install:migrations
+$ bin/rails pengine:install:migrations
 ```
 
 Development
