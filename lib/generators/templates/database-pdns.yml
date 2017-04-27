@@ -1,0 +1,37 @@
+sqlite: &sqlite
+  adapter: sqlite3
+  database: db/<%= Rails.env %>.sqlite3
+
+mysql: &mysql
+  adapter: mysql2
+  username: root
+  password:
+  database: powerdns_<%= Rails.env %>
+  encoding: utf8
+
+postgresql: &postgresql
+  adapter: postgresql
+  encoding: unicode
+  username: postgres
+  password:
+  database: powerdns_<%= Rails.env %>
+  min_messages: ERROR
+
+defaults: &defaults
+  pool: 16
+  timeout: 5000
+  host: localhost
+  <<: *<%= ENV['DB'] || "mysql" %>
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  adapter: mysql2
+  database: <%= ENV['DB_NAME'] %>
+  host: <%= ENV['DB_HOST'] %>
+  username: <%= ENV['DB_USER'] %>
+  password: <%= ENV['DB_PASS'] %>
