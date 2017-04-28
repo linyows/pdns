@@ -10,7 +10,22 @@ module Pengine
   mattr_accessor :database_config_file_suffix
   self.database_config_file_suffix = :pdns
 
-  def self.setup
-    yield self
+  mattr_accessor :db_name
+  self.db_name = :pdns
+
+  mattr_accessor :db_conf_path
+  self.db_conf_path = "config/database-#{self.db_name}.yml"
+
+  mattr_accessor :db_dir_path
+  self.db_dir_path = File.expand_path('../../db', __FILE__)
+
+  class << self
+    def setup
+      yield self
+    end
+
+    def db_conf
+      @db_conf ||= ::YAML::load(ERB.new(IO.read(self.db_conf_path.to_s)).result)
+    end
   end
 end
