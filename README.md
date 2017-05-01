@@ -1,10 +1,10 @@
-Pengine
+Pdns
 =======
 
-The Pengine is PowerDNS API mountable engine for Rails.
+The Pdns is PowerDNS API mountable engine for Rails.
 
-[![Travis](https://img.shields.io/travis/linyows/pengine.svg?style=flat-square)](https://travis-ci.org/linyows/pengine)
-[![ruby gem](https://img.shields.io/gem/v/pengine.svg?style=flat-square)](https://rubygems.org/gems/pengine)
+[![Travis](https://img.shields.io/travis/linyows/pdns.svg?style=flat-square)](https://travis-ci.org/linyows/pdns)
+[![ruby gem](https://img.shields.io/gem/v/pdns.svg?style=flat-square)](https://rubygems.org/gems/pdns)
 
 Installation
 ------------
@@ -12,7 +12,7 @@ Installation
 Add this line to your application's Gemfile:
 
 ```rb
-gem 'pengine'
+gem 'pdns'
 ```
 
 And then execute:
@@ -24,7 +24,7 @@ $ bundle
 Or install it yourself as:
 
 ```sh
-$ gem install pengine
+$ gem install pdns
 ```
 
 Usage
@@ -33,13 +33,13 @@ Usage
 config/routes.rb:
 
 ```rb
-mount Pengine::Engine, at: '/dns'
+mount Pdns::Engine, at: '/dns'
 ```
 
 setup:
 
 ```sh
-$ bin/rails pengine:install:migrations
+$ bin/rails pdns:install:migrations
 ```
 
 Development
@@ -52,7 +52,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 Contributing
 ------------
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/linyows/pengine.
+Bug reports and pull requests are welcome on GitHub at https://github.com/linyows/pdns.
 
 Author
 ------

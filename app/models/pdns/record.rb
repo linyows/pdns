@@ -1,4 +1,4 @@
-module Pengine
+module Pdns
   class Record < ApplicationRecord
     self.table_name = :records
     self.inheritance_column = :_type_disabled
@@ -6,7 +6,7 @@ module Pengine
 
     validates :domain_id, presence: true
     validates :name, presence: true,
-      format: { with: Pengine.domain_format },
+      format: { with: Pdns.domain_format },
       uniqueness: { scope: [:type, :content] }
     validates :type, presence: true, inclusion: {
       in: %w(SOA NS A CNAME MX TXT SRV PTR AAAA LOC SPF SSHFP)

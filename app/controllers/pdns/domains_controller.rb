@@ -1,6 +1,6 @@
-require_dependency 'pengine/application_controller'
+require_dependency 'pdns/application_controller'
 
-module Pengine
+module Pdns
   class DomainsController < ApplicationController
     before_action :set_domain, only: %i(show destroy)
 

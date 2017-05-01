@@ -1,15 +1,15 @@
 $:.push File.expand_path("../lib", __FILE__)
 
 # Maintain your gem's version:
-require "pengine/version"
+require "pdns/version"
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
-  s.name        = "pengine"
-  s.version     = Pengine::VERSION
+  s.name        = "pdns"
+  s.version     = Pdns::VERSION
   s.authors     = ["linyows"]
   s.email       = ["linyows@gmail.com"]
-  s.homepage    = "https://github.com/linyows/pengine"
+  s.homepage    = "https://github.com/linyows/pdns"
   s.summary     = "The Pengin is PowerDNS API mountable engine for Rails."
   s.description = "The Pengin is PowerDNS API mountable engine for Rails."
   s.license     = "MIT"

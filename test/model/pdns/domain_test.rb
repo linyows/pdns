@@ -1,6 +1,6 @@
 require 'test_helper'
 
-module Pengine
+module Pdns
   class DomainTest < ActiveSupport::TestCase
   end
 end

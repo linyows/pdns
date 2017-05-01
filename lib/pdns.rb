@@ -1,6 +1,6 @@
-require 'pengine/engine'
+require 'pdns/engine'
 
-module Pengine
+module Pdns
   mattr_accessor :domain_format
   self.domain_format = /\A[^-][a-z0-9\-\._]*[^-]\.[a-z0-9-]{2,}\Z/
 
