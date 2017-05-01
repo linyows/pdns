@@ -1,4 +1,4 @@
-module Pdns
+module PDNS
   class Record < ApplicationRecord
     self.table_name = :records
     self.inheritance_column = :_type_disabled
@@ -6,7 +6,7 @@ module Pdns
 
     validates :domain_id, presence: true
     validates :name, presence: true,
-      format: { with: Pdns.domain_format },
+      format: { with: PDNS.domain_format },
       uniqueness: { scope: [:type, :content] }
     validates :type, presence: true, inclusion: {
       in: %w(SOA NS A CNAME MX TXT SRV PTR AAAA LOC SPF SSHFP)

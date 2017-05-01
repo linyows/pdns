@@ -1,7 +1,7 @@
-Pdns
+PDNS
 =======
 
-The Pdns is PowerDNS API mountable engine for Rails.
+The PDNS is PowerDNS API mountable engine for Rails.
 
 [![Travis](https://img.shields.io/travis/linyows/pdns.svg?style=flat-square)](https://travis-ci.org/linyows/pdns)
 [![ruby gem](https://img.shields.io/gem/v/pdns.svg?style=flat-square)](https://rubygems.org/gems/pdns)
@@ -33,7 +33,7 @@ Usage
 config/routes.rb:
 
 ```rb
-mount Pdns::Engine, at: '/dns'
+mount PDNS::Engine, at: '/dns'
 ```
 
 setup:

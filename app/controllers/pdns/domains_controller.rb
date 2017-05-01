@@ -1,6 +1,6 @@
 require_dependency 'pdns/application_controller'
 
-module Pdns
+module PDNS
   class DomainsController < ApplicationController
     before_action :set_domain, only: %i(show destroy)
 

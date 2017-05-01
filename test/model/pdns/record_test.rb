@@ -1,6 +1,6 @@
 require 'test_helper'
 
-module Pdns
+module PDNS
   class DomainTest < ActiveSupport::TestCase
   end
 end

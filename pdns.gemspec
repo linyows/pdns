@@ -6,7 +6,7 @@ require "pdns/version"
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
   s.name        = "pdns"
-  s.version     = Pdns::VERSION
+  s.version     = PDNS::VERSION
   s.authors     = ["linyows"]
   s.email       = ["linyows@gmail.com"]
   s.homepage    = "https://github.com/linyows/pdns"

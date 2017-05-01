@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  mount Pdns::Engine => "/pdns"
+  mount PDNS::Engine => "/pdns"
 end

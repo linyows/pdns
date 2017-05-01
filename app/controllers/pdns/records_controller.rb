@@ -1,6 +1,6 @@
 require_dependency 'pdns/application_controller'
 
-module Pdns
+module PDNS
   class RecordsController < ApplicationController
     before_action :set_domain, only: %i(show create update destroy force_update_records)
     before_action :set_record, only: %i(show update destroy)

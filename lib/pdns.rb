@@ -1,6 +1,6 @@
 require 'pdns/engine'
 
-module Pdns
+module PDNS
   mattr_accessor :domain_format
   self.domain_format = /\A[^-][a-z0-9\-\._]*[^-]\.[a-z0-9-]{2,}\Z/
 

@@ -1,5 +1,5 @@
-module Pdns
+module PDNS
   class Engine < ::Rails::Engine
-    isolate_namespace Pdns
+    isolate_namespace PDNS
   end
 end
