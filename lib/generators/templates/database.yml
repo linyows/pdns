@@ -33,6 +33,6 @@ test:
 production:
   <<: *default
   database: pdns
-  host: "<%= ENV['DB_HOST'] %>"
-  username: "<%= ENV['DB_USER'] %>"
-  password: "<%= ENV['DB_PASS'] %>"
+  host: <%%= ENV['DB_HOST'] %>
+  username: <%%= ENV['DB_USER'] %>
+  password: <%%= ENV['DB_PASS'] %>
