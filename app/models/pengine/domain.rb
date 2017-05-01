@@ -1,5 +1,6 @@
 module Pengine
   class Domain < ApplicationRecord
+    self.table_name = :domains
     self.inheritance_column = :_type_disabled
     has_many :records, dependent: :destroy
 

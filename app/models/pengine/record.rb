@@ -1,5 +1,6 @@
 module Pengine
   class Record < ApplicationRecord
+    self.table_name = :records
     self.inheritance_column = :_type_disabled
     belongs_to :domain
 
