@@ -39,7 +39,9 @@ mount PDNS::Engine, at: '/dns'
 setup:
 
 ```sh
-$ bin/rails pdns:install:migrations
+$ bin/rails generate pdns:install
+$ bin/rails pdns:create
+$ bin/rails pdns:setup
 ```
 
 Development
