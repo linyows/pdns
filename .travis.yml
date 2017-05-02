@@ -1,11 +1,16 @@
 language: ruby
 rvm:
   - 2.4.1
-  - 2.3.4
-  - 2.2.7
+bundler_args: --without test --jobs 3 --retry 3
 before_install:
-  - gem update bundler --no-document
+  - gem update bundler
+  - bundle install
+  - bundle binstubs rake
+  - bin/rake deps
 script:
-  - bundle exec rake test
+  - bin/rake test
+services:
+  - mysql
 notifications:
   slack: linyows:2oeZ2qcLnaMjbnEYodwEXKTr
+  email: false
