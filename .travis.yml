@@ -1,16 +1,17 @@
 language: ruby
 rvm:
-  - 2.4.1
-bundler_args: --without test --jobs 3 --retry 3
+- 2.4.1
+bundler_args: "--without test --jobs 3 --retry 3"
 before_install:
-  - gem update bundler
-  - bundle install
-  - bundle binstubs rake
-  - bin/rake deps
+- gem update bundler
+- bundle install
+- bundle binstubs rake
+- bin/rake deps
 script:
-  - bin/rake test
+- bin/rake test
 services:
-  - mysql
+- mysql
 notifications:
-  slack: linyows:2oeZ2qcLnaMjbnEYodwEXKTr
+  slack:
+    secure: JjhTYjqx6PiCszFq2q+I7g7KZElKN6J8qwdlBXFNuu9EPLzFhX9sYqiVv5c0Qf+Kqlt7xTijL9IZ9j07f8wdpGqws9xK1VN3WxKAqzu214zQXjiTsK+3tbiyLZsD1JW1En6V5SoIjeepbozSzJndIqUPLbhEazMgCOOSnizU40IWJzQERuYArIY9/W+O7vCowD3SvHHcKJriKSjlRY4bbkfwnHXy/JGBArrjiHblcIHCNMAPzRUL6VCRSSN5hyFIWVqjvVakmb/mvxME0tImmn2/wj56VzbN7Y2KHD+NXJ2eBut9iG9puDGz9+FQB1JD1I5jt3zeLjOsdpMKh8lGskrhXDlpBGKl1zfsgWLKaTPbnPwJLq+MonJgnjjqjKdFWt/QC8AC8kTKXg8vUBJh7DWBcbh9pyoiDZnjUeSkpWxbB/fyTys8vvAVvxIo/NAvkAFar4A9RhbiPHYr48ExZ0l3mr09t6qehsZY8IahTy81jMQ+BWDLPhCzFk+K8abWzsxnSDIyEGhrYiQ4Ygf3udGS1BjRg36r8q537wry+AmLbu1hdZnLSp/gwZhAAk5fk4zdCWbMmHG6HogNgWtkluO6XXSM2T74aD2VjhYhCUu/drR1Blb2u7higr1VHsxwAb8DBk5c4IJByF349GvOdwJpEBhROPRU8WCLUe4RhWY=
   email: false
