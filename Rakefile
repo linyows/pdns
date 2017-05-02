@@ -35,3 +35,10 @@ end
 
 
 task default: :test
+
+desc 'Prepare dependencies for this application'
+task deps: %w(app:update:bin) do
+  sh 'bin/rails g pdns:install'
+  sh 'bin/rails app:pdns:create'
+  sh 'bin/rails app:pdns:setup'
+end
