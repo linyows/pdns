@@ -6,3 +6,5 @@ test/dummy/db/*.sqlite3-journal
 test/dummy/log/*.log
 test/dummy/tmp/
 /Gemfile.lock
+config/database-pdns.yml
+config/initializers
