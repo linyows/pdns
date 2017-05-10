@@ -2,15 +2,17 @@ require_dependency 'pdns/application_controller'
 
 module PDNS
   class RecordsController < ApplicationController
-    before_action :set_domain, only: %i(show create update destroy force_update_records)
-    before_action :set_record, only: %i(show update destroy)
-    before_action :delete_records, only: %i(create)
-
     def show
+      set_domain
+      set_record
+
       render json: @record, status: :ok
     end
 
     def create
+      set_domain
+      delete_records
+
       @record = @domain.records.create(record_params)
 
       if @record.save
@@ -22,6 +24,9 @@ module PDNS
     end
 
     def update
+      set_domain
+      set_record
+
       if @record.update(record_params)
         update_serial
         render json: @record, status: :ok
@@ -31,12 +36,17 @@ module PDNS
     end
 
     def destroy
+      set_domain
+      set_record
+
       @record.destroy
       update_serial
       head :no_content
     end
 
     def force_update_records
+      set_domain
+
       type = params[:type] || 'A'
       @domain.records.where(type: type).update_all(record_params)
       render json: @domain.records.where(type: type), status: :ok

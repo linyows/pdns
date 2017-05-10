@@ -2,9 +2,9 @@ require_dependency 'pdns/application_controller'
 
 module PDNS
   class DomainsController < ApplicationController
-    before_action :set_domain, only: %i(show destroy)
-
     def show
+      set_domain
+
       render json: @domain, status: :ok
     end
 
@@ -19,6 +19,8 @@ module PDNS
     end
 
     def destroy
+      set_domain
+
       @domain.destroy
       head :no_content
     end
