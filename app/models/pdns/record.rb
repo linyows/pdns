@@ -1,3 +1,5 @@
+require_dependency 'pdns/application_record'
+
 module PDNS
   class Record < ApplicationRecord
     self.table_name = :records
