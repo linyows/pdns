@@ -62,7 +62,7 @@ module PDNS
     end
 
     def set_record
-      permitted = params.permit %i(id type content ttl prio)
+      permitted = params.permit %i(id type content ttl prio auth)
       permitted[:name] = permitted.delete :id
 
       record = @domain.records.where(permitted)
@@ -77,7 +77,7 @@ module PDNS
     end
 
     def record_params
-      params[:record].permit %i(name type content ttl prio)
+      params[:record].permit %i(name type content ttl prio auth)
     end
 
     def delete_records
