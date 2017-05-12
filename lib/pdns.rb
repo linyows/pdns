@@ -16,6 +16,12 @@ module PDNS
   mattr_accessor :db_dir_path
   self.db_dir_path = File.expand_path('../../db', __FILE__)
 
+  mattr_accessor :domain_as_json
+  self.domain_as_json = nil
+
+  mattr_accessor :record_as_json
+  self.record_as_json = nil
+
   class << self
     def setup
       yield self
