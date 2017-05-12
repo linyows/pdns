@@ -14,9 +14,11 @@ module PDNS
       domain = Domain.new
       domain.valid?
 
-      assert_equal domain.errors.count, 2
+      assert_equal domain.errors.count, 4
       assert_includes domain.errors[:name], 'can\'t be blank'
       assert_includes domain.errors[:name], 'is invalid'
+      assert_includes domain.errors[:type], 'can\'t be blank'
+      assert_includes domain.errors[:type], 'is not included in the list'
     end
 
     test 'domain name validation' do

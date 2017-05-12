@@ -7,7 +7,7 @@ module PDNS
     end
 
     test 'records show when valid' do
-      domain = Domain.new(name: 'foo.com')
+      domain = Domain.new(name: 'foo.com', type: 'NATIVE')
       domain.save
       Record.new(
         domain_id: domain.id,
@@ -22,13 +22,16 @@ module PDNS
 
       record = JSON.parse(response.body)
       assert_equal record.keys, %w(id domain_id name type content ttl prio
-                                   change_date created_at updated_at)
+                                   change_date disabled ordername auth)
 
       assert_equal record['domain_id'], domain.id
       assert_equal record['name'], 'www.foo.com'
       assert_equal record['type'], 'CNAME'
       assert_equal record['ttl'], 3600
       assert_nil record['prio']
+      assert_not record['disabled']
+      assert_nil record['ordername']
+      assert record['auth']
     end
 
     test 'records show when not found' do

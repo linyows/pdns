@@ -3,7 +3,7 @@ require 'test_helper'
 module PDNS
   class RecordTest < ActiveSupport::TestCase
     setup do
-      @domain = Domain.new(name: 'example.com')
+      @domain = Domain.new(name: 'example.com', type: 'NATIVE')
       @domain.save
       @record = Record.new(
         domain_id: @domain.id,
