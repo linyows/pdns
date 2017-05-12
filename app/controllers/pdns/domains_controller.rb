@@ -35,7 +35,7 @@ module PDNS
     end
 
     def domain_params
-      params[:domain].permit %i(name type)
+      (params[:domain] || params).permit %i(name type)
     end
   end
 end

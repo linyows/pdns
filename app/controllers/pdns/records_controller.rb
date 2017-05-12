@@ -77,7 +77,7 @@ module PDNS
     end
 
     def record_params
-      params[:record].permit %i(name type content ttl prio auth)
+      (params[:record] || params).permit %i(name type content ttl prio auth)
     end
 
     def delete_records
