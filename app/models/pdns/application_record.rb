@@ -5,7 +5,7 @@ module PDNS
 
     def as_json(options = nil)
       resource = self.class.name.split('::').last
-      method = :"#{resource}_as_json"
+      method = :"#{resource.downcase}_as_json"
 
       if PDNS.respond_to?(method) && PDNS.send(method).present?
         PDNS.send(method).call(attributes, options)
