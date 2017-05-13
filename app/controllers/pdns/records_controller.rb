@@ -80,6 +80,10 @@ module PDNS
       (params[:record] || params).permit %i(name type content ttl prio auth)
     end
 
+    def record_params_with_id_to_name
+      record_params.merge(name: params[:id])
+    end
+
     def delete_records
       params['before_delete_conditions'].each do |condition|
         condition.each { |k, v| @domain.records.where(k => v).destroy_all }
