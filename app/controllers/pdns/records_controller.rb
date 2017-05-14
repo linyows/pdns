@@ -62,10 +62,8 @@ module PDNS
     end
 
     def set_record
-      permitted = params.permit %i(id type content ttl prio auth)
-      permitted[:name] = permitted.delete :id
+      record = @domain.records.where(record_params_with_id_to_name)
 
-      record = @domain.records.where(permitted)
       raise ActiveRecord::RecordNotFound.new(
         "record not found"
       ) if record.empty?
@@ -73,6 +71,7 @@ module PDNS
       raise ActiveRecord::ActiveRecordError.new(
         "record not unique"
       ) unless record.one?
+
       @record = record.first
     end
 
