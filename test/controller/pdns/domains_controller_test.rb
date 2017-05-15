@@ -6,6 +6,28 @@ module PDNS
       @routes = Engine.routes
     end
 
+    test 'domains index when domain exists' do
+      Domain.new(name: 'foo.com', type: 'NATIVE', account: 'foo').save
+      Domain.new(name: 'foo.net', type: 'NATIVE', account: 'foo').save
+      Domain.new(name: 'bar.co.jp', type: 'NATIVE', account: 'bar').save
+
+      get :index, params: { account: 'foo' }
+      assert_equal 200, response.status
+
+      domains = JSON.parse(response.body)
+      assert_equal domains.length, 2
+      assert_equal domains.first['name'], 'foo.com'
+      assert_equal domains.last['name'], 'foo.net'
+    end
+
+    test 'domains index when domain not exists' do
+      get :index
+      assert_equal 200, response.status
+
+      body = JSON.parse(response.body)
+      assert_equal body, []
+    end
+
     test 'domains show when valid' do
       Domain.new(name: 'foo.com', type: 'NATIVE').save
 

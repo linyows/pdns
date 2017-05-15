@@ -6,13 +6,51 @@ module PDNS
       @routes = Engine.routes
     end
 
+    test 'records index when record exists' do
+      domain = Domain.new(name: 'foo.com', type: 'NATIVE')
+      domain.save
+
+      Record.new(
+        domain_id: domain.id,
+        name: 'www.foo.com',
+        type: 'A',
+        content: '172.0.0.1',
+        ttl: 3600
+      ).save
+      Record.new(
+        domain_id: domain.id,
+        name: 'app.foo.com',
+        type: 'CNAME',
+        content: 'foo.google.com',
+        ttl: 3600
+      ).save
+
+      get :index
+      assert_equal 200, response.status
+
+      records = JSON.parse(response.body)
+      assert_equal records.length, 2
+      assert_equal records.first['name'], 'www.foo.com'
+      assert_equal records.last['name'], 'app.foo.net'
+    end
+
+    test 'records index when record not exists' do
+      Domain.new(name: 'foo.com', type: 'NATIVE').save
+
+      get :index
+      assert_equal 200, response.status
+
+      body = JSON.parse(response.body)
+      assert_equal body, []
+    end
+
     test 'records show when valid' do
       domain = Domain.new(name: 'foo.com', type: 'NATIVE')
       domain.save
       Record.new(
         domain_id: domain.id,
         name: 'www.foo.com',
-        type: 'CNAME',
+        type: 'A',
         content: '172.0.0.1',
         ttl: 3600
       ).save
@@ -26,7 +64,7 @@ module PDNS
 
       assert_equal record['domain_id'], domain.id
       assert_equal record['name'], 'www.foo.com'
-      assert_equal record['type'], 'CNAME'
+      assert_equal record['type'], 'A'
       assert_equal record['ttl'], 3600
       assert_nil record['prio']
       assert_not record['disabled']
