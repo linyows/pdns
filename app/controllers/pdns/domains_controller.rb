@@ -2,6 +2,12 @@ require_dependency 'pdns/application_controller'
 
 module PDNS
   class DomainsController < ApplicationController
+    def index
+      set_domains
+
+      render json: @domains, status: :ok
+    end
+
     def show
       set_domain
 
@@ -36,6 +42,14 @@ module PDNS
 
     def domain_params
       (params[:domain] || params).permit %i(name type)
+    end
+
+    def set_domains
+      @domains = Domain.where(domain_params_for_index)
+    end
+
+    def domain_params_for_index
+      (params[:domain] || params).permit %i(account)
     end
   end
 end
