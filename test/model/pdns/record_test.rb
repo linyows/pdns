@@ -37,7 +37,7 @@ module PDNS
       assert_includes record.errors[:ttl], 'can\'t be blank'
       assert_includes record.errors[:ttl], 'is not a number'
 
-      assert_equal record.errors.count, 9
+      assert_equal 9, record.errors.count
     end
 
     test 'record name validation' do
