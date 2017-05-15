@@ -15,9 +15,9 @@ module PDNS
       assert_equal 200, response.status
 
       domains = JSON.parse(response.body)
-      assert_equal domains.length, 2
-      assert_equal domains.first['name'], 'foo.com'
-      assert_equal domains.last['name'], 'foo.net'
+      assert_equal 2, domains.length
+      assert_equal 'foo.com', domains.first['name']
+      assert_equal 'foo.net', domains.last['name']
     end
 
     test 'domains index when domain not exists' do
@@ -25,7 +25,7 @@ module PDNS
       assert_equal 200, response.status
 
       body = JSON.parse(response.body)
-      assert_equal body, []
+      assert_equal [], body
     end
 
     test 'domains show when valid' do
@@ -35,11 +35,11 @@ module PDNS
       assert_equal 200, response.status
 
       domain = JSON.parse(response.body)
-      assert_equal domain.keys, %w(id name master last_check type
-                                   notified_serial account)
+      assert_equal %w(id name master last_check type
+        notified_serial account), domain.keys
 
-      assert_equal domain['name'], 'foo.com'
-      assert_equal domain['type'], 'NATIVE'
+      assert_equal 'foo.com', domain['name']
+      assert_equal 'NATIVE', domain['type']
       assert_nil domain['last_check']
       assert_nil domain['notified_serial']
       assert_nil domain['account']
