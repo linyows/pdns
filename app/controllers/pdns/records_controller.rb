@@ -2,6 +2,13 @@ require_dependency 'pdns/application_controller'
 
 module PDNS
   class RecordsController < ApplicationController
+    def index
+      set_domain
+      set_records
+
+      render json: @records, status: :ok
+    end
+
     def show
       set_domain
       set_record
@@ -62,17 +69,17 @@ module PDNS
     end
 
     def set_record
-      record = @domain.records.where(record_params_with_id_to_name)
+      set_records
 
       raise ActiveRecord::RecordNotFound.new(
         "record not found"
-      ) if record.empty?
+      ) if @records.empty?
 
       raise ActiveRecord::ActiveRecordError.new(
         "record not unique"
-      ) unless record.one?
+      ) unless @records.one?
 
-      @record = record.first
+      @record = @records.first
     end
 
     def record_params
@@ -91,6 +98,10 @@ module PDNS
 
     def update_serial
       @record.update_serial if params[:skip_update_serial].nil?
+    end
+
+    def set_records
+      @records = @domain.records.where(record_params_with_id_to_name)
     end
   end
 end
