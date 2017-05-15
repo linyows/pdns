@@ -30,8 +30,8 @@ module PDNS
 
       records = JSON.parse(response.body)
       assert_equal 2, records.length
-      assert_equal records.first['name'], 'www.foo.com'
-      assert_equal records.last['name'], 'app.foo.com'
+      assert_equal 'www.foo.com', records.first['name']
+      assert_equal 'app.foo.com', records.last['name']
     end
 
     test 'records index when record not exists' do
@@ -41,7 +41,7 @@ module PDNS
       assert_equal 200, response.status
 
       body = JSON.parse(response.body)
-      assert_equal body, []
+      assert_equal [], body
     end
 
     test 'records show when valid' do
@@ -59,13 +59,13 @@ module PDNS
       assert_equal 200, response.status
 
       record = JSON.parse(response.body)
-      assert_equal record.keys, %w(id domain_id name type content ttl prio
-                                   change_date disabled ordername auth)
+      assert_equal %w(id domain_id name type content ttl prio
+        change_date disabled ordername auth), record.keys
 
-      assert_equal record['domain_id'], domain.id
-      assert_equal record['name'], 'www.foo.com'
-      assert_equal record['type'], 'A'
-      assert_equal record['ttl'], 3600
+      assert_equal domain.id, record['domain_id']
+      assert_equal 'www.foo.com', record['name']
+      assert_equal 'A', record['type']
+      assert_equal 3600, record['ttl']
       assert_nil record['prio']
       assert_not record['disabled']
       assert_nil record['ordername']
