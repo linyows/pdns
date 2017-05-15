@@ -101,7 +101,7 @@ module PDNS
     end
 
     def set_records
-      @records = @domain.records.where(record_params_with_id_to_name)
+      @records = @domain.records.where(record_params)
     end
   end
 end

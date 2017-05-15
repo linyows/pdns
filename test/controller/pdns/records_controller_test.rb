@@ -25,19 +25,19 @@ module PDNS
         ttl: 3600
       ).save
 
-      get :index
+      get :index, params: { domain_id: 'foo.com' }
       assert_equal 200, response.status
 
       records = JSON.parse(response.body)
-      assert_equal records.length, 2
+      assert_equal 2, records.length
       assert_equal records.first['name'], 'www.foo.com'
-      assert_equal records.last['name'], 'app.foo.net'
+      assert_equal records.last['name'], 'app.foo.com'
     end
 
     test 'records index when record not exists' do
       Domain.new(name: 'foo.com', type: 'NATIVE').save
 
-      get :index
+      get :index, params: { domain_id: 'foo.com' }
       assert_equal 200, response.status
 
       body = JSON.parse(response.body)
