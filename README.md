@@ -3,6 +3,12 @@ PDNS
 
 The PDNS is PowerDNS API mountable engine for Rails.
 
+Backends   | Support
+--------   | -------
+MySQL      | ○
+PostgreSQL | -
+Sqlite3    | -
+
 [![Travis](https://img.shields.io/travis/linyows/pdns.svg?style=flat-square)](https://travis-ci.org/linyows/pdns)
 [![ruby gem](https://img.shields.io/gem/v/pdns.svg?style=flat-square)](https://rubygems.org/gems/pdns)
 
