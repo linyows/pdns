@@ -10,6 +10,7 @@ PostgreSQL | -
 Sqlite3    | -
 
 [![Travis](https://img.shields.io/travis/linyows/pdns.svg?style=flat-square)](https://travis-ci.org/linyows/pdns)
+[![Coveralls](https://img.shields.io/coveralls/linyows/pdns/master.svg?style=flat-square)](https://coveralls.io/github/linyows/pdns)
 [![ruby gem](https://img.shields.io/gem/v/pdns.svg?style=flat-square)](https://rubygems.org/gems/pdns)
 
 Installation
