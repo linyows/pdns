@@ -9,9 +9,10 @@ MySQL      | ○
 PostgreSQL | -
 Sqlite3    | -
 
+[![ruby gem](https://img.shields.io/gem/v/pdns.svg?style=flat-square)](https://rubygems.org/gems/pdns)
 [![Travis](https://img.shields.io/travis/linyows/pdns.svg?style=flat-square)](https://travis-ci.org/linyows/pdns)
 [![Coveralls](https://img.shields.io/coveralls/linyows/pdns/master.svg?style=flat-square)](https://coveralls.io/github/linyows/pdns)
-[![ruby gem](https://img.shields.io/gem/v/pdns.svg?style=flat-square)](https://rubygems.org/gems/pdns)
+[![Code Climate](https://img.shields.io/codeclimate/github/linyows/pdns.svg?style=flat-square)](https://codeclimate.com/github/linyows/pdns)
 
 Installation
 ------------
