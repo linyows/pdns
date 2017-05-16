@@ -1,3 +1,8 @@
+if ENV['CI']
+  require 'coveralls'
+  Coveralls.wear!
+end
+
 # Configure Rails Environment
 ENV["RAILS_ENV"] = "test"
 
