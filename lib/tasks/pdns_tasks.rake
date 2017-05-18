@@ -2,7 +2,7 @@ require 'pdns'
 include ActiveRecord::Tasks
 
 namespace :pdns do
-  task :prepare do
+  task prepare: %i(environment) do
     DatabaseTasks.database_configuration = PDNS.db_conf
     DatabaseTasks.db_dir = PDNS.db_dir_path
     ActiveRecord::Base.configurations = DatabaseTasks.database_configuration
