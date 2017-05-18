@@ -19,8 +19,11 @@ namespace :pdns do
     DatabaseTasks.drop_current
   end
 
-  desc 'Setup database for PDNS'
-  task setup: %i(prepare) do
+  desc 'Load schema for PDNS'
+  task migrate: %i(prepare) do
     DatabaseTasks.load_schema_current(:ruby)
   end
+
+  desc 'Setup database for PDNS'
+  task setup: %i(prepare create migrate)
 end
