@@ -24,4 +24,12 @@ class PDNS::Test < ActiveSupport::TestCase
   test "db dir path" do
     assert_equal PDNS.db_dir_path, File.expand_path('../../db', __FILE__)
   end
+
+  test 'domain_as_json' do
+    assert_not PDNS.domain_as_json
+  end
+
+  test 'record_as_json' do
+    assert_not PDNS.record_as_json
+  end
 end
