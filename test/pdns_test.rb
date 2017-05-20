@@ -6,23 +6,23 @@ class PDNS::Test < ActiveSupport::TestCase
   end
 
   test "domain format" do
-    assert_equal PDNS.domain_format, /\A[^-][a-z0-9\-\._]*[^-]\.[a-z0-9-]{2,}\Z/
+    assert_equal /\A[^-][a-z0-9\-\._]*[^-]\.[a-z0-9-]{2,}\Z/, PDNS.domain_format
   end
 
   test "domain format for routes" do
-    assert_equal PDNS.domain_format_for_routes, /[a-z0-9\-\._]*\.[a-z0-9-]{2,}/
+    assert_equal /[a-z0-9\-\._]*\.[a-z0-9-]{2,}/, PDNS.domain_format_for_routes
   end
 
   test "db name" do
-    assert_equal PDNS.db_name, :pdns
+    assert_equal :pdns, PDNS.db_name
   end
 
   test "db conf path" do
-    assert_equal PDNS.db_conf_path, "config/database-pdns.yml"
+    assert_equal "config/database-pdns.yml", PDNS.db_conf_path
   end
 
   test "db dir path" do
-    assert_equal PDNS.db_dir_path, File.expand_path('../../db', __FILE__)
+    assert_equal File.expand_path('../../db', __FILE__), PDNS.db_dir_path
   end
 
   test 'domain_as_json' do
