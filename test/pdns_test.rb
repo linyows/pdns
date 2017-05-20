@@ -32,4 +32,9 @@ class PDNS::Test < ActiveSupport::TestCase
   test 'record_as_json' do
     assert_not PDNS.record_as_json
   end
+
+  test 'db conf' do
+    expected = {"sqlite"=>{"adapter"=>"sqlite3", "database"=>"db/development.sqlite3"}, "mysql"=>{"adapter"=>"mysql2", "username"=>"root", "host"=>"localhost", "password"=>nil, "database"=>"pdns_development", "encoding"=>"utf8"}, "postgresql"=>{"pool"=>16, "timeout"=>5000, "adapter"=>"postgresql", "encoding"=>"unicode", "username"=>"postgres", "password"=>nil, "database"=>"pdns_development", "min_messages"=>"ERROR"}, "default"=>{"adapter"=>"mysql2", "username"=>"root", "host"=>"localhost", "password"=>nil, "database"=>"pdns_development", "encoding"=>"utf8"}, "development"=>{"adapter"=>"mysql2", "username"=>"root", "host"=>"localhost", "password"=>nil, "database"=>"pdns_development", "encoding"=>"utf8"}, "test"=>{"adapter"=>"mysql2", "username"=>"root", "host"=>"localhost", "password"=>nil, "database"=>"pdns_test", "encoding"=>"utf8"}, "production"=>{"adapter"=>"mysql2", "username"=>nil, "host"=>nil, "password"=>nil, "database"=>"pdns", "encoding"=>"utf8"}}
+    assert_equal expected, PDNS.db_conf
+  end
 end
