@@ -6,11 +6,13 @@ class PDNS::Test < ActiveSupport::TestCase
   end
 
   test "domain format" do
-    assert_equal /\A[^-][a-z0-9\-\._]*[^-]\.[a-z0-9-]{2,}\Z/, PDNS.domain_format
+    expected = /\A[^-][a-z0-9\-\._]*[^-]\.[a-z0-9-]{2,}\Z/
+    assert_equal expected, PDNS.domain_format
   end
 
   test "domain format for routes" do
-    assert_equal /[a-z0-9\-\._]*\.[a-z0-9-]{2,}/, PDNS.domain_format_for_routes
+    expected = /[a-z0-9\-\._]*\.[a-z0-9-]{2,}/
+    assert_equal expected, PDNS.domain_format_for_routes
   end
 
   test "db name" do
