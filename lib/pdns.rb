@@ -1,4 +1,5 @@
 require 'pdns/engine'
+require 'pdns/inflect'
 
 module PDNS
   mattr_accessor :domain_format
