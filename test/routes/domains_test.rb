@@ -1,45 +1,33 @@
 require 'test_helper'
 
 module PDNS
-  class RecordsRouteTest < ActionController::TestCase
+  class DomainsRouteTest < ActionController::TestCase
     setup do
       @routes = Engine.routes
     end
 
-    test 'records index routes' do
-      assert_generates '/domains/foo.com/records',
-        controller: 'pdns/records', action: 'index', domain_id: 'foo.com'
-      assert_recognizes({ controller: 'pdns/records', action: 'index', domain_id: 'foo.com' },
-        { path: 'domains/foo.com/records', method: :get })
-      assert_routing '/domains/foo.com/records',
-        controller: 'pdns/records', action: 'index', domain_id: 'foo.com'
+    test 'domains index routes' do
+      assert_generates '/domains', controller: 'pdns/domains', action: 'index'
+      assert_recognizes({ controller: 'pdns/domains', action: 'index' }, { path: 'domains', method: :get })
+      assert_routing '/domains', controller: 'pdns/domains', action: 'index'
     end
 
-    test 'records create routes' do
-      assert_generates '/domains/foo.com/records',
-        controller: 'pdns/records', action: 'create', domain_id: 'foo.com'
-      assert_recognizes({ controller: 'pdns/records', action: 'create', domain_id: 'foo.com' },
-        { path: 'domains/foo.com/records', method: :post })
-      assert_routing({ method: :post, path: '/domains/foo.com/records' },
-        { controller: 'pdns/records', action: 'create', domain_id: 'foo.com' })
+    test 'domains create routes' do
+      assert_generates '/domains', controller: 'pdns/domains', action: 'create'
+      assert_recognizes({ controller: 'pdns/domains', action: 'create' }, { path: 'domains', method: :post })
+      assert_routing({ method: :post, path: '/domains' }, { controller: 'pdns/domains', action: 'create' })
     end
 
-    test 'records show routes' do
-      assert_generates '/domains/foo.com/records/www.foo.com',
-        controller: 'pdns/records', action: 'show', domain_id: 'foo.com', id: 'www.foo.com'
-      assert_recognizes({ controller: 'pdns/records', action: 'show', domain_id: 'foo.com', id: 'www.foo.com' },
-        { path: '/domains/foo.com/records/www.foo.com', method: :get })
-      assert_routing '/domains/foo.com/records/www.foo.com',
-        controller: 'pdns/records', action: 'show', domain_id: 'foo.com', id: 'www.foo.com'
+    test 'domains show routes' do
+      assert_generates '/domains/foo.com', controller: 'pdns/domains', action: 'show', id: 'foo.com'
+      assert_recognizes({ controller: 'pdns/domains', action: 'show', id: 'foo.com' }, { path: 'domains/foo.com', method: :get })
+      assert_routing '/domains/foo.com', controller: 'pdns/domains', action: 'show', id: 'foo.com'
     end
 
-    test 'records destroy routes' do
-      assert_generates '/domains/foo.com/records/www.foo.com',
-        controller: 'pdns/records', action: 'destroy', domain_id: 'foo.com', id: 'www.foo.com'
-      assert_recognizes({ controller: 'pdns/records', action: 'destroy', domain_id: 'foo.com', id: 'www.foo.com' },
-        { path: 'domains/foo.com/records/www.foo.com', method: :delete })
-      assert_routing({ method: :delete, path: '/domains/foo.com/records/www.foo.com' },
-        { controller: 'pdns/records', action: 'destroy', domain_id: 'foo.com', id: 'www.foo.com' })
+    test 'domains destroy routes' do
+      assert_generates '/domains/foo.com', controller: 'pdns/domains', action: 'destroy', id: 'foo.com'
+      assert_recognizes({ controller: 'pdns/domains', action: 'destroy', id: 'foo.com' }, { path: 'domains/foo.com', method: :delete })
+      assert_routing({ method: :delete, path: '/domains/foo.com' }, { controller: 'pdns/domains', action: 'destroy', id: 'foo.com' })
     end
   end
 end
