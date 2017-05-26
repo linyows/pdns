@@ -20,7 +20,7 @@ module PDNS
       set_domain
       delete_records
 
-      @record = @domain.records.create(record_params)
+      @record = @domain.records.create(record_params_without_id)
 
       if @record.save
         update_serial
@@ -85,10 +85,12 @@ module PDNS
     def record_params
       (params[:record] || params).permit %i(name type content ttl prio auth)
     end
+    alias :record_params_without_id :record_params
 
     def record_params_with_id_to_name
-      record_params.merge(name: params[:id])
+      record_params_without_id.merge(name: params[:id])
     end
+    alias :record_params :record_params_with_id_to_name
 
     def delete_records
       params['before_delete_conditions'].each do |condition|
