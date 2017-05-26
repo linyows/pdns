@@ -4,7 +4,7 @@ module PDNS
   class RecordsController < ApplicationController
     def index
       set_domain
-      @records = @domain.records.where(record_params_without_id)
+      set_records
 
       render json: @records, status: :ok
     end
@@ -100,6 +100,10 @@ module PDNS
 
     def update_serial
       @record.update_serial if params[:skip_update_serial].nil?
+    end
+
+    def set_records
+      @records = @domain.records.where(record_params_without_id)
     end
   end
 end
