@@ -18,6 +18,15 @@ jobs:
       with:
         version: 2.6.x
 
+    - name: Build
+      run: |
+        gem install bundler
+        bundle install --without test --jobs 4 --retry 3
+        bundle exec rake
+        bundle binstubs rake
+        bin/rake deps
+        bin/rake test
+
     - name: Publish to GPR
       run: |
         mkdir -p $HOME/.gem
@@ -28,7 +37,7 @@ jobs:
         gem push --KEY github --host https://rubygems.pkg.github.com/${OWNER} *.gem
       env:
         GEM_HOST_API_KEY: ${{secrets.GPR_AUTH_TOKEN}}
-        OWNER: username
+        OWNER: linyows
 
     - name: Publish to RubyGems
       run: |
