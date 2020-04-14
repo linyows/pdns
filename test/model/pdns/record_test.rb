@@ -101,6 +101,10 @@ module PDNS
       @record.prio = nil
       assert @record.valid?
 
+      @record.type = 'CAA'
+      @record.prio = nil
+      assert @record.valid?
+
       @record.type = 'MX'
       @record.prio = nil
       assert_not @record.valid?
