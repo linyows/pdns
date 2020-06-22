@@ -5,6 +5,7 @@ namespace :pdns do
   task prepare: %i(environment) do
     DatabaseTasks.database_configuration = PDNS.db_conf
     DatabaseTasks.db_dir = PDNS.db_dir_path
+    DatabaseTasks.migrations_paths = PDNS.migrations_path
     ActiveRecord::Base.configurations = DatabaseTasks.database_configuration
     DatabaseTasks.current_config = DatabaseTasks.database_configuration[Rails.env]
   end
