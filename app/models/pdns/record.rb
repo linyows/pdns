@@ -11,7 +11,7 @@ module PDNS
       format: { with: PDNS.domain_format },
       uniqueness: { scope: [:type, :content] }
     validates :type, presence: true, inclusion: {
-      in: %w(SOA NS A CNAME MX TXT SRV PTR AAAA LOC SPF SSHFP CAA)
+      in: %w(SOA NS A CNAME MX TXT SRV PTR AAAA LOC SPF SSHFP CAA DS)
     }
     validates :content, presence: true
     validates :ttl, numericality: true, presence: true
